@@ -129,40 +129,40 @@ class _AuthScreenState extends State<AuthScreen> {
                               _enteredEmail = value!;
                             },
                           ),
-                          TextFormField(
-                            decoration:
-                                const InputDecoration(labelText: 'Username'),
-                            enableSuggestions: false,
-                            validator: (value) {
-                              if (value == null ||
-                                  value.isEmpty ||
-                                  value.trim().length < 4) {
-                                return 'Please enter at least 4 charcters';
-                              }
-                              return null;
-                            },
-                            onSaved: (value) {
-                              _enterdUsername = value!;
-                            },
-                          ),
                           if (!_isLogin)
                             TextFormField(
                               decoration:
-                                  const InputDecoration(labelText: 'Password'),
-                              obscureText: true,
+                                  const InputDecoration(labelText: 'Username'),
+                              enableSuggestions: false,
                               validator: (value) {
-                                if (value == null || value.trim().length < 6) {
-                                  return 'Password must be at least 6 characters long.';
-                                }
-                                if (value.contains(' ')) {
-                                  return 'Password can not contain blank spaces';
+                                if (value == null ||
+                                    value.isEmpty ||
+                                    value.trim().length < 4) {
+                                  return 'Please enter at least 4 charcters';
                                 }
                                 return null;
                               },
                               onSaved: (value) {
-                                _enteredPassword = value!;
+                                _enterdUsername = value!;
                               },
                             ),
+                          TextFormField(
+                            decoration:
+                                const InputDecoration(labelText: 'Password'),
+                            obscureText: true,
+                            validator: (value) {
+                              if (value == null || value.trim().length < 6) {
+                                return 'Password must be at least 6 characters long.';
+                              }
+                              if (value.contains(' ')) {
+                                return 'Password can not contain blank spaces';
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _enteredPassword = value!;
+                            },
+                          ),
                           const SizedBox(height: 12),
                           if (_isAuthenticating)
                             const CircularProgressIndicator(),
